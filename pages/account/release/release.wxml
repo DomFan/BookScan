@@ -1,5 +1,5 @@
 <import src="../../../style/footer.wxml" />
-<image class="toWrite" bindtap="toAddDiary" src="/image/add.png"></image>
+<image class="toWrite" bindtap="toAddDiary" src="/image/1.png"></image>
 <view class="page">
     <view class="page__hd i-header">
         <view class="g-bd">
@@ -17,7 +17,7 @@
 
       <!--<button type="primary" bindtap="toAddDiary" hover-class="other-button-hover"> 增加日记 </button>-->
       <view class="weui-panel">
-        <view class="weui-panel__hd">日记列表</view>
+        <view class="weui-panel__hd">书籍列表</view>
         <view class="weui-panel__bd">
           <view class="weui-media-box weui-media-box_text" wx:for="{{diaryList}}" wx:key="diaryItem">
             <view class="weui-media-box__title weui-media-box__title_in-text">
@@ -34,13 +34,6 @@
               </view>
             </view>
           </view>
-        </view>
-      </view>
-    </view>
-    <view class="page__ft">
-      <view class="page__bd page__bd_spacing">
-        <view class="weui-footer ">
-          <view class="weui-footer__text">Copyright © 2013-2016 www.bmob.cn</view>
         </view>
       </view>
     </view>

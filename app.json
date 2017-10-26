@@ -19,39 +19,33 @@
     "pages/pay/pay"
   ],
   "window": {
+    "navigationBarBackgroundColor": "#35495e",
+    "navigationBarTextStyle": "white",
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#3891f8",
-    "navigationBarTitleText": "增删改查-小程序Demo",
-    "navigationBarTextStyle": "#fff"
+    "navigationBarTitleText": "增删改查-小程序Demo"
   },
   "tabBar": {
-    "color": "#7A7E83",
-    "selectedColor": "#318efb",
-    "borderStyle": "#3891f8",
+    "color": "#888",
+    "selectedColor": "#35495e",
     "backgroundColor": "#ffffff",
+    "borderStyle": "#4BFF2F",
     "list": [
       {
-        "pagePath": "pages/interface/interface",
-        "iconPath": "image/icon_API.png",
-        "selectedIconPath": "image/icon_API_HL.png",
-        "text": "常用接口"
-      },
-      {
         "pagePath": "pages/index/index",
-        "iconPath": "image/list.png",
-        "selectedIconPath": "image/list1.png",
-        "text": "日记管理"
+        "iconPath": "image/3.png",
+        "selectedIconPath": "image/3.png",
+        "text": "管理"
       },
       {
         "pagePath": "pages/interface/article/index",
-        "iconPath": "image/icon_component.png",
-        "selectedIconPath": "image/icon_component_HL.png",
-        "text": "活动专题"
+        "iconPath": "image/9.png",
+        "selectedIconPath": "image/9.png",
+        "text": "扫码"
       },
       {
         "pagePath": "pages/account/account",
-        "iconPath": "image/wechat.png",
-        "selectedIconPath": "image/wechatHL.png",
+        "iconPath": "image/15.png",
+        "selectedIconPath": "image/15.png",
         "text": "我"
       }
     ]

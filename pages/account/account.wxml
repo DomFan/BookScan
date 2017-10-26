@@ -21,7 +21,7 @@
                         <navigator url="release/release" class="weui-cell weui-cell_access"
                                    hover-class="weui-cell_active">
                             <view class="weui-cell__hd">
-                                <image src="/image/reg.png" style="width: 20px;height: 20px;margin-right: 5px"  />
+                                <image src="/image/1.png" style="width: 20px;height: 20px;margin-right: 5px"  />
                             </view>
                             <view class="weui-cell__bd weui-cell_primary">
                                 <view>我发布的</view>
@@ -31,7 +31,7 @@
                         <navigator url="feedback/feedback" class="weui-cell weui-cell_access"
                                    hover-class="weui-cell_active">
                             <view class="weui-cell__hd">
-                                <image src="/image/edit.png" style="width: 20px;height: 20px;margin-right: 5px"  />
+                                <image src="/image/16.png" style="width: 20px;height: 20px;margin-right: 5px"  />
                             </view>
                             <view class="weui-cell__bd weui-cell_primary">
                                 <view>反馈建议</view>
@@ -41,7 +41,7 @@
                         <navigator url="" bindtap="about" class="weui-cell weui-cell_access"
                                    hover-class="weui-cell_active">
                             <view class="weui-cell__hd">
-                                <image src="/image/help.png" style="width: 20px;height: 20px;margin-right: 5px"  />
+                                <image src="/image/6.png" style="width: 20px;height: 20px;margin-right: 5px"  />
                             </view>
                             <view class="weui-cell__bd weui-cell_primary">
                                 <view>关于本程序</view>
@@ -53,5 +53,4 @@
             </view>
         </view>
     </view>
-    <template is="foot"  />
 </view>

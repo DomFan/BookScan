@@ -229,7 +229,7 @@ form{
 }
 .i-header{
   height: 350rpx;
-   background-color: #3891f8;   
+   background-color: #35495e;   
    text-align: center;
 }
 .i-header-h1{

@@ -1,5 +1,5 @@
 <import src="../../style/footer.wxml" />
-<image class="toWrite" bindtap="toAddDiary" src="http://bmob-cdn-12920.b0.upaiyun.com/2017/07/17/a0c21208406c7ec2806156de66e68754.jpg"></image>
+<image class="toWrite" bindtap="toAddDiary" src="/image/plus.png"></image>
 <view class="page">
   <scroll-view lower-threshold="800" bindscrolltolower="pullUpLoad" upper-threshold="0" scroll-y="true" style="height: {{windowHeight}}px;  ">
     <view class="page__bd">
@@ -55,13 +55,6 @@
           </view>
 </block>
 
-        </view>
-      </view>
-    </view>
-    <view class="page__ft">
-      <view class="page__bd page__bd_spacing">
-        <view class="weui-footer ">
-          <view class="weui-footer__text">Copyright © 2013-2016 www.bmob.cn</view>
         </view>
       </view>
     </view>
