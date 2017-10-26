@@ -1,66 +1,55 @@
-// pages/scan/scan.js
+// example/user/book/book.js
+var articleTitle = "Title";
+var articleAuthor = "Author";
+var isbn = "XXXXXX";
+var imageSource = "/image/default_book_pic.jpg";
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-  
+    articleTitle: articleTitle,
+    articleAuthor: articleAuthor,
+    isbn: isbn,
+    imageSource: imageSource
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-  
+
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
+  onScanButton: function () {
+    var that = this;
+    wx.scanCode({
+      onlyFromCamera: false,
+      success: function (res) {
+        console.log(res.result);
+        isbn = res.result;
+        that.setData({
+          isbn: isbn,
+        });
+        wx.request({
+          url: 'https://api.douban.com/v2/book/isbn/' + isbn,
+          data: {},
+          method: 'GET',
+          header: {
+            "Content-Type": "json"
+          },//Keep this in Development reference
+          success: function (res) {
+            articleTitle = res.data.title;
+            articleAuthor = res.data.author;
+            console.log(res);
+            if (res.data.images && res.data.images.large) {
+              imageSource = res.data.images.large;
+            }
+            that.setData({
+              articleTitle: articleTitle,
+              articleAuthor: articleAuthor,
+              isbn: isbn,
+              imageSource: imageSource
+            });
+          }
+        })
+      }
+    });
   }
-})
+
+});

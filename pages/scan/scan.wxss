@@ -1,1 +1,30 @@
-/* pages/scan/scan.wxss */
+page {
+  background-color: #fff;
+}
+
+.toWrite {
+  width: 100rpx;
+  height: 100rpx;
+  display: block;
+  /*background:url("/image/1.png") no-repeat;*/
+  padding: 0;
+  background-size: cover;
+  position: fixed;
+  right: 74rpx;
+  bottom: 100rpx;
+  border-radius: 50%;
+  z-index: 999;
+}
+
+image {
+  margin: 4px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 420rpx;
+  height: 594rpx;
+}
+
+.weui-article {
+  padding: 30rpx 60rpx;
+}
