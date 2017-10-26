@@ -10,13 +10,13 @@
     "pages/interface/interface",
     "pages/interface/article/index",
     "pages/interface/code/code",
-    
     "pages/sendSms/sendSms",
     "pages/login/login",
     "pages/getOpenId/getOpenId",
     "pages/register/register",
     "pages/picasa/picasa",
-    "pages/pay/pay"
+    "pages/pay/pay",
+    "pages/scan/scan"
   ],
   "window": {
     "navigationBarBackgroundColor": "#35495e",
@@ -37,7 +37,7 @@
         "text": "管理"
       },
       {
-        "pagePath": "pages/interface/article/index",
+        "pagePath": "pages/scan/scan",
         "iconPath": "image/9.png",
         "selectedIconPath": "image/9.png",
         "text": "扫码"
