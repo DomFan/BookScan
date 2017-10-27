@@ -9,15 +9,17 @@
     <view class="page__desc">装订：{{rows.binding}}</view>
     <view class="page__desc">系列：{{rows.series}}</view>
     <view class="page__desc">ISBN：{{rows.isbn}}</view>
-    <view class="page__desc">概要</view>
-    <view class="page__tags">{{rows.summary}}</view>
-    <view class="page__desc">作者简介：{{rows.author_intro}}</view>
     <view class="page__desc">页数：{{rows.pages}}</view>
     <view class="page__desc">出版社：{{rows.publisher}}</view>
-    <view class="page__desc">标签：</view>
+    <view class="page__desc">评分：{{rows.rating[0]}}/{{rows.rating[1]}}</view>
+    <view class="page__desc">作者简介：{{rows.author_intro}}</view>
+    <view class="blackcolor page__desc"  wx:if="{{rows.tags}}">标签</view>
+    <view class="positioncenter" >
     <block wx:for="{{rows.tags}}" wx:key="{{index}}">
-      <view class="page__tags">{{item.name}} --- {{item.count}}</view>
+      <a class="page__tags">{{item.name}}[{{item.count}}]</a>
     </block>
-    <view class="page__desc">评分：{{rows.rating[0]}} --- {{rows.rating[1]}}人投票</view>
+    </view>
+    <view class="blackcolor page__desc">概要</view>
+    <view class="page__tags">{{rows.summary}}</view>
   </view>
 </view>

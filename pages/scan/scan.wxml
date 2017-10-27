@@ -6,18 +6,18 @@
     <view class="page__desc">{{subtitle}}</view>
     <view class="page__desc">作者：{{articleAuthor}}</view>
     <view class="page__desc">译者：{{translator}}</view>
-    <view class="page__desc">{{binding}}</view>
+    <view class="page__desc">评分：{{rating[0]}}/{{rating[1]}}</view>
+    <view class="page__desc">装订：{{binding}}</view>
     <view class="page__desc">系列：{{series}}</view>
     <view class="page__desc">ISBN：{{isbn}}</view>
-    <view class="page__desc">概要</view>
-    <view class="page__tags">{{summary}}</view>
-    <view class="page__desc">作者简介：{{author_intro}}</view>
     <view class="page__desc">页数：{{pages}}</view>
     <view class="page__desc">出版社：{{publisher}}</view>
     <view class="page__desc">标签：</view>
     <block wx:for="{{tags}}" wx:key="{{index}}">
-      <view class="page__tags">{{item.name}} --- {{item.count}}</view>
+      <a class="page__tags">·{{item.count}}{{item.name}}</a>
     </block>
-    <view class="page__desc">评分：{{rating[0]}} --- {{rating[1]}}人投票</view>
+    <view class="page__desc">作者简介：{{author_intro}}</view>  
+    <view class="page__desc specialcolor">概要</view>
+    <view class="page__tags">{{summary}}</view>  
   </view>
 </view>
