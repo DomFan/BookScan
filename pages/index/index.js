@@ -114,146 +114,16 @@ Page({
     })
   },
   pullUpLoad: function (e) {
-    var limit = that.data.limit + 2
+    var limit = that.data.limit + 10
     this.setData({
       limit: limit
     })
     this.onShow()
   },
   toAddDiary: function () {
-    that.setData({
-      writeDiary: true
+    wx.navigateTo({
+      url: '/pages/newbook/newbook',
     })
-  },
-  addDiary: function (event) {
-    var title = event.detail.value.title;
-    var content = event.detail.value.content;
-    var formId = event.detail.formId;
-    console.log("event", event)
-    if (!title) {
-      common.showTip("标题不能为空", "loading");
-    }
-    else if (!content) {
-      common.showTip("内容不能为空", "loading");
-    }
-    else {
-      that.setData({
-        loading: true
-      })
-      var currentUser = Bmob.User.current();
-
-      var User = Bmob.Object.extend("_User");
-      var UserModel = new User();
-
-      // var post = Bmob.Object.createWithoutData("_User", "594fdde53c");
-
-      //增加日记
-      var Diary = Bmob.Object.extend("diary");
-      var diary = new Diary();
-      diary.set("title", title);
-      diary.set("formId", formId);//保存formId
-      diary.set("content", content);
-      if (currentUser) {
-        UserModel.id = currentUser.id;
-        diary.set("own", UserModel);
-      }
-      //添加数据，第一个入口参数是null
-      diary.save(null, {
-        success: function (result) {
-          // 添加成功，返回成功之后的objectId（注意：返回的属性名字是id，不是objectId），你还可以在Bmob的Web管理后台看到对应的数据
-          common.showTip('添加日记成功');
-          that.setData({
-            writeDiary: false,
-            loading: false
-          })
-
-          var currentUser = Bmob.User.current();
-
-          //成功后发送模板消息，这个只能在手机上测试，模拟器里面没有formid
-          // var temp = {
-          //   "touser": currentUser.get("openid"),
-          //   "template_id": "B-2GcobfYnptevxY8G3SdA72YLYGZpOoJO_FEHlouWg",
-          //   "page": "",
-          //   "form_id": formId,
-          //   "data": {
-          //     "keyword1": {
-          //       "value": "SDK测试内容",
-          //       "color": "#173177"
-
-          //     },
-          //     "keyword2": {
-          //       "value": "199.00"
-          //     },
-          //     "keyword3": {
-          //       "value": "123456789"
-          //     },
-          //     "keyword4": {
-          //       "value": "2015年01月05日 12:30"
-          //     }
-          //     ,
-          //     "keyword5": {
-          //       "value": "恭喜您支付成功，如有疑问请反馈与我"
-          //     }
-          //   }
-          //   , "emphasis_keyword": "keyword1.DATA"
-          // }
-          // console.log(temp);
-          // Bmob.sendMessage(temp).then(function (obj) {
-          //   console.log('发送成功');
-
-
-          // }, function (err) {
-
-          //   common.showTip('失败' + err);
-          // });
-
-
-          //成功后发送主人模板消息，这个只需把openid改正确即可接收到， Bmob后端云公众号回复openid 
-          // var temp = {
-          //   "touser": "oUxY3w_jURG89H5wCIvJDPjJ5s2o",
-          //   "template_id": "-ERkPwp0ntimqH39bggQc_Pj55a18CYLpj-Ert8-c8Y",
-          //   "url": "http://www.baidu.cn/",
-          //   "data": {
-          //     "first": {
-          //       "value": "您好，Restful 失效，请登录控制台查看。",
-          //       "color": "#c00"
-          //     },
-          //     "keyword1": {
-          //       "value": "Restful 失效"
-          //     },
-          //     "keyword2": {
-          //       "value": "2017-07-03 16:13:01"
-          //     },
-          //     "keyword3": {
-          //       "value": "高"
-          //     },
-          //     "remark": {
-          //       "value": "如果您十分钟内再次收到此信息，请及时处理。"
-          //     }
-          //   }
-          // }
-          // console.log(temp);
-          // Bmob.sendMasterMessage(temp).then(function (obj) {
-          //   console.log('发送成功');
-
-
-          // }, function (err) {
-
-          //   common.showTip('失败' + err);
-          // });
-
-
-
-          that.onShow()
-        },
-        error: function (result, error) {
-          // 添加失败
-          common.showTip('添加日记失败，请重新发布', 'loading');
-
-        }
-      });
-    }
-
   },
   closeLayer: function () {
     that.setData({
@@ -270,11 +140,11 @@ var that =this;
     var objectId = event.target.dataset.id;
     wx.showModal({
       title: '操作提示',
-      content: '确定要删除要日记？',
+      content: '确定要删除要书籍？',
       success: function (res) {
         if (res.confirm) {
           //删除日记
-          var Diary = Bmob.Object.extend("diary");
+          var Book = Bmob.Object.extend("book");
           // var query = new Bmob.Query('diary');
           // query.find().then(function (todos) {
           //   return Bmob.Object.destroyAll(todos);
@@ -286,7 +156,7 @@ var that =this;
           // });
 
           //创建查询对象，入口参数是对象类的实例
-          var query = new Bmob.Query(Diary);
+          var query = new Bmob.Query(Book);
           query.get(objectId, {
             success: function (object) {
               // The object was retrieved successfully.
@@ -312,11 +182,8 @@ var that =this;
     var nowTile = event.target.dataset.title;
     var nowContent = event.target.dataset.content;
     var nowId = event.target.dataset.id;
-    that.setData({
-      modifyDiarys: true,
-      nowTitle: nowTile,
-      nowContent: nowContent,
-      nowId: nowId
+    wx.navigateTo({
+      url: '/pages/index/modify/modify?objectId=' + nowId,
     })
   },
   modifyDiary: function (e) {
@@ -362,14 +229,14 @@ var that =this;
 */
 function getList(t, k) {
   that = t;
-  var Diary = Bmob.Object.extend("diary");
-  var query = new Bmob.Query(Diary);
-  var query1 = new Bmob.Query(Diary);
+  var Book = Bmob.Object.extend("book");
+  var query = new Bmob.Query(Book);
+  var query1 = new Bmob.Query(Book);
 
   //会员模糊查询
   if (k) {
     query.equalTo("title", { "$regex": "" + k + ".*" });
-    query1.equalTo("content", { "$regex": "" + k + ".*" });
+    query1.equalTo("author", { "$regex": "" + k + ".*" });
   }
 
   //普通会员匹配查询
