@@ -12,7 +12,6 @@ page {
   position: fixed;
   right: 74rpx;
   bottom: 100rpx;
-  border-radius: 50%;
   z-index: 999;
 }
 
