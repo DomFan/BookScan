@@ -1,1 +1,37 @@
-/* pages/index/detail/index.wxss */
+page {
+  background-color: #fff;
+}
+
+.toWrite {
+  width: 100rpx;
+  height: 100rpx;
+  display: block;
+  /*background:url("/image/1.png") no-repeat;*/
+  padding: 0;
+  background-size: cover;
+  position: fixed;
+  right: 74rpx;
+  bottom: 100rpx;
+  z-index: 999;
+}
+
+image {
+  margin: 4px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 420rpx;
+  height: 594rpx;
+}
+
+.weui-article {
+  padding: 30rpx 60rpx;
+}
+
+.page__tags {
+  margin-top: 5px;
+  margin-left: 10px;
+  color: #888;
+  text-align: left;
+  font-size: 14px;
+}
