@@ -13,8 +13,8 @@ var author_intro = "Author Intro";
 var publisher = "Publisher";
 var pages = "1";
 var imageSource = "/image/default_book_pic.jpg";
-var tags;
-var rating;
+var tags = [];
+var rating = ["0.0","0"];
 
 Page({
   data: {
@@ -134,8 +134,23 @@ Page({
               imageSource = res.data.images.large;
             }
 
-            //TODO Tags and ratings
+            if (res.data.hasOwnProperty("tags") && res.data.tags) {
+              tags = res.data.tags;
+            }
+            else {
+              tags = [];
+            }
 
+            if (res.data.hasOwnProperty("rating") && res.data.rating) {
+              rating[0] = res.data.rating.average;
+              rating[1] = res.data.rating.numRaters.toString();
+            }
+            else {
+              rating = ["0.0","0"];
+            }
+
+
+            //TODO Tags and ratings
 
             that.setData({
               articleTitle: title,
@@ -168,8 +183,21 @@ Page({
                     success: function(Result) {
                       console.log(Result);
                       if (Result.length) {
-                        var booknumber = Result.get("number");
-                        Result.set("number",booknumber++);
+                        var booknumber = Result[0].get("number");
+                        Result[0].set("number", ++booknumber);
+                        Result[0].save(null, {
+                          success: function (r) {
+                            console.log("number+1");
+                            wx.showModal({
+                              showCancel: false,
+                              title: '提示',
+                              content: '库里已有相同的书，已将对应的书籍数量进行增加',
+                            });
+                          },
+                          error: function (r, error) {
+                            console.log(error);
+                          }
+                        });
                       }
                       else {
                         var book = new Book();
@@ -188,8 +216,8 @@ Page({
                         book.set("publisher", publisher);
                         book.set("pages", pages);
                         book.set("image", imageSource);
-                        // book.set("tags", tags);
-                        // book.set("rating", rating);
+                        book.set("tags", tags);
+                        book.set("rating", rating);
 
                         book.save(null, {
                           success: function (r) {

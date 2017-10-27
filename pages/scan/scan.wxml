@@ -10,12 +10,15 @@
     <view class="page__desc">系列：{{series}}</view>
     <view class="page__desc">ISBN：{{isbn}}</view>
     <view class="page__desc">概要</view>
-    <view class="page__desc">{{summary}}</view>
+    <view class="page__tags">{{summary}}</view>
     <view class="page__desc">作者简介：{{author_intro}}</view>
     <view class="page__desc">页数：{{pages}}</view>
     <view class="page__desc">出版社：{{publisher}}</view>
-    <view class="page__desc">标签：{{tags}}</view>
-    <view class="page__desc">星级：{{rating}}</view>
+    <view class="page__desc">标签：</view>
+    <block wx:for="{{tags}}" wx:key="{{index}}">
+      <view class="page__tags">{{item.name}} --- {{item.count}}</view>
+    </block>
+    <view class="page__desc">评分：{{rating[0]}} --- {{rating[1]}}人投票</view>
     <view class="weui-article">
       <view class="weui-article__section">
         <view class="weui-article__section">
