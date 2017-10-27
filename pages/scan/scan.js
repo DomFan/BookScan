@@ -104,6 +104,7 @@ Page({
 
             if (res.data.hasOwnProperty("summary") && res.data.summary) {
               summary = res.data.summary;
+              summary = summary.split("\n").join("");
             }
             else {
               summary = "无概要";
@@ -148,9 +149,6 @@ Page({
             else {
               rating = ["0.0","0"];
             }
-
-
-            //TODO Tags and ratings
 
             that.setData({
               articleTitle: title,
@@ -221,10 +219,20 @@ Page({
 
                         book.save(null, {
                           success: function (r) {
-                            console.log("666666");
+                            console.log("保存成功");
+                            wx.showModal({
+                              title: '哦恭喜',
+                              content: '成功新加入一本书',
+                              showCancel: false,
+                            });
                           },
                           error: function (r,error) {
                             console.log(error);
+                            wx.showModal({
+                              title: '妈耶',
+                              content: '好像库炸了没加进去',
+                              showCancel: false,
+                            });
                           }
                         });
                       }
