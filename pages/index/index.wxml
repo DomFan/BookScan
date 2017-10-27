@@ -27,7 +27,7 @@
 
 
 
-        <view class="weui-panel__hd">书籍列表</view>
+        <view class="weui-panel__hd">书籍列表 共有{{total_num}}种</view>
         <view class="weui-panel__bd">
 <block wx:if="{{diaryList.length>0}}">
           <navigator class="weui-media-box weui-media-box_text" wx:for="{{diaryList}}" wx:key="diaryItem" url="/pages/index/detail/index?objectId={{item.objectId}}">
