@@ -8,7 +8,7 @@
     <view class="page__desc">译者：{{translator}}</view>
     <view class="page__desc">评分：{{rating[0]}}/{{rating[1]}}</view>
     <view class="page__desc">装订：{{binding}}</view>
-    <view class="page__desc">系列：{{series.title}}</view>
+    <view class="page__desc">系列：{{series}}</view>
     <view class="page__desc">ISBN：{{isbn}}</view>
     <view class="page__desc">页数：{{pages}}</view>
     <view class="page__desc">出版社：{{publisher}}</view>

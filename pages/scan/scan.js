@@ -88,7 +88,7 @@ Page({
                 translator = ["无译者"];
               }
 
-              if (res.data.hasOwnProperty("series") && res.data.series) {
+              if (res.data.hasOwnProperty("series")) {
                 series = res.data.series.title;
               }
               else {
