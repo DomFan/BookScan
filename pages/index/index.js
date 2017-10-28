@@ -227,15 +227,30 @@ function getList(t, k) {
   var Book = Bmob.Object.extend("book");
   var query = new Bmob.Query(Book);
   var query1 = new Bmob.Query(Book);
+  var query2 = new Bmob.Query(Book);
 
   //会员模糊查询
-  if (k) {
-    query.equalTo("title", { "$regex": "" + k + ".*" });
-    query1.equalTo("author", { "$regex": "" + k + ".*" });
-  }
+  // if (k) {
+  //   query.equalTo("title", { "$regex": k + ".*" });
+  //   query1.equalTo("author", { "$regex": "" + k + ".*" });
+  // }
 
   //普通会员匹配查询
-  // query.equalTo("title", k);
+  if (k) {
+    console.log(k.slice(0, 1));
+    switch (k.slice(0, 1)) {
+      case 'n':
+        query.equalTo("title", k.slice(1));
+        break;
+      case 'a':
+        query.equalTo("author", [k.slice(1)]);
+        break;
+      case 'i':
+        query.equalTo("isbn", k.slice(1));
+        break;
+    }
+    query1.equalTo("author", { "$regex": "" + k + ".*" });
+  }
 
   query.descending('createdAt');
   query.include("own")
