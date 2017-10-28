@@ -567,6 +567,9 @@ Page({
     var that = this;
     that.setData({
       modalHidden: true,
+      titleSearch: "",
+      authorSearch: "",
+      publisherSearch: "",
     });
   }
 
