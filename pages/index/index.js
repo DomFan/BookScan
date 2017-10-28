@@ -266,7 +266,13 @@ function getList(t, k) {
       // 循环处理查询到的数据
       that.setData({
         diaryList: results,
-        total_num: results.length,
+      })
+      mainQuery.count({
+        success: function (count) {
+          that.setData({
+            total_num: count,
+          })
+        }
       })
     },
     error: function (error) {
