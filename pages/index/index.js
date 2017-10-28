@@ -248,6 +248,9 @@ function getList(t, k) {
       case 'i':
         query.equalTo("isbn", k.slice(1));
         break;
+      default:
+        query.equalTo("title", k);
+        break;
     }
     query1.equalTo("author", { "$regex": "" + k + ".*" });
   }
