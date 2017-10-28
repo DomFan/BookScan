@@ -305,7 +305,7 @@ Page({
       });
       var key = titleSearch;
       if (authorSearch) {
-        key = key + "%20" +authorSearch;
+        key = key + "%20" + authorSearch;
       }
       if (publisherSearch) {
         key = key + "%20" + publisherSearch;
@@ -514,13 +514,6 @@ Page({
               });
             }
             else {
-              if (res.statusCode == 200 && res.data.count == 0) {
-                wx.showModal({
-                  title: '妈耶',
-                  content: '还是搜不到这本书诶',
-                  showCancel: false,
-                });
-              }
               if (res.data.code == 112) {
                 wx.showModal({
                   title: '妈耶',
@@ -529,11 +522,20 @@ Page({
                 });
               }
               else {
-                wx.showModal({
-                  title: '妈耶',
-                  content: '发生未知错误惹',
-                  showCancel: false,
-                });
+                if (res.statusCode == 200 && res.data.count == 0) {
+                  wx.showModal({
+                    title: '妈耶',
+                    content: '还是搜不到这本书诶',
+                    showCancel: false,
+                  });
+                }
+                else {
+                  wx.showModal({
+                    title: '妈耶',
+                    content: '发生未知错误惹',
+                    showCancel: false,
+                  });
+                }
               }
             }
           }
