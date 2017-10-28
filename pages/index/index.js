@@ -238,7 +238,7 @@ function getList(t, k) {
   // query.equalTo("title", k);
 
   query.descending('createdAt');
-  query.include("own")
+  query.include("own");
   // 查询所有数据
   query.limit(that.data.limit);
 
