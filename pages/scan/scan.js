@@ -268,14 +268,14 @@ Page({
                   wx.showModal({
                     title: '妈耶',
                     content: 'API调用次数超了，IP被禁了',
-                    cancelText: false,
+                    showCancel: false,
                   });
                 }
                 else {
                   wx.showModal({
                     title: '妈耶',
                     content: '发生未知错误惹',
-                    cancelText: false,
+                    showCancel: false,
                   });
                 }
               }
@@ -518,21 +518,21 @@ Page({
                 wx.showModal({
                   title: '妈耶',
                   content: '还是搜不到这本书诶',
-                  cancelText: false,
+                  showCancel: false,
                 });
               }
               if (res.data.code == 112) {
                 wx.showModal({
                   title: '妈耶',
                   content: 'API调用次数超了，IP被禁了',
-                  cancelText: false,
+                  showCancel: false,
                 });
               }
               else {
                 wx.showModal({
                   title: '妈耶',
                   content: '发生未知错误惹',
-                  cancelText: false,
+                  showCancel: false,
                 });
               }
             }
