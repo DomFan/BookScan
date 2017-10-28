@@ -227,7 +227,6 @@ function getList(t, k) {
   var Book = Bmob.Object.extend("book");
   var query = new Bmob.Query(Book);
   var query1 = new Bmob.Query(Book);
-  var query2 = new Bmob.Query(Book);
 
   //会员模糊查询
   // if (k) {
@@ -252,7 +251,6 @@ function getList(t, k) {
         query.equalTo("title", k);
         break;
     }
-    query1.equalTo("author", { "$regex": "" + k + ".*" });
   }
 
   query.descending('createdAt');
@@ -260,14 +258,14 @@ function getList(t, k) {
   // 查询所有数据
   query.limit(that.data.limit);
 
-  var mainQuery = Bmob.Query.or(query, query1);
-  mainQuery.find({
+  // var mainQuery = Bmob.Query(query);
+  query.find({
     success: function (results) {
       // 循环处理查询到的数据
       that.setData({
         diaryList: results,
       })
-      mainQuery.count({
+      query.count({
         success: function (count) {
           that.setData({
             total_num: count,

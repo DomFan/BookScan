@@ -14,11 +14,11 @@ Page({
     modifyDiarys: false,
     objectid:0,
     categoryItems: [
-      { name: '生活认知（衣食住行，交通工具等）', value: '0' },
+      { name: '内容未分类', value: '0',checked:true},
       { name: '生活认知（刷牙，洗澡，如厕，逛街等日常行为）', value: '1' },
       { name: '生活认知（医院，学校，职业，家居等认知）', value: '2' },
       { name: '生活认知（生日，节日，习俗习惯）', value: '3' },
-      { name: '生活认知（其他）', value: '4' },
+      { name: '生活认知（衣食住行，交通工具等）', value: '4' },
       { name: '人际交往（自我认同，如情绪管理，生病等等）', value: '5' },
       { name: '人际交往（亲情，如爸爸妈妈兄弟姐妹，祖孙，亲戚，离家出走，守法等等）', value: '6' },
       { name: '人际交往（友情，如朋友，社区，邻居，宠物等等）', value: '7' },
@@ -62,7 +62,7 @@ Page({
       { name: '以上分类都不合适', value: '45' },
     ],
     typeItems: [
-      { name: '无字书，純图画的', value: '0' },
+      { name: '体裁未分类', value: '0',checked: true },
       { name: '图画文学（图画书，以图画为主，字数很少，适合2-6岁小朋友的）', value: '1' },
       { name: '图画文学（图画书，以图画为主，字数较多，有简单的故事情节）', value: '2' },
       { name: '童话寓言', value: '3' },
@@ -76,6 +76,35 @@ Page({
       { name: '成人小说', value: '11' },
       { name: '成人科学文艺类', value: '12' },
       { name: '其他', value: '13' },
+      { name: '无字书，純图画的', value: '14' },
+    ],
+    themeItems: [
+      { name: '主题未分类', value: '0',checked: true},
+      { name: '快乐', value: '1' },
+      { name: '分享与合作', value: '2' },
+      { name: '关心与照顾', value: '3' },
+      { name: '帮助别人与给予', value: '4' },
+      { name: '尊重尊严', value: '5' },
+      { name: '勇气', value: '6' },
+      { name: '智慧', value: '7' },
+      { name: '感恩', value: '8' },
+      { name: '可爱纯真', value: '9' },
+      { name: '哲理思辨', value: '10' },
+      { name: '成长励志', value: '11' },
+      { name: '爱与希望', value: '12' },
+      { name: '悲伤，抑郁', value: '13' },
+      { name: '客观描述，无大主题', value: '14' },
+      { name: '童话或故事书，内容太多，无法分类', value: '15' },
+    ],
+    levelItems: [
+      { name: '难度未分类', value: '0',checked:true },
+      { name: '大班及以下（绘本与玩具书为主，大篇幅图画，字几乎没有，内容基本是重复一些话，故事情节非常简单）', value: '1' },
+      { name: '一年级（绘本为主，大篇幅图画，字不多，有一定的故事和情节）', value: '2' },
+      { name: '二年级（以绘本故事为主,有部分文字，图文并茂，但情节简单，主题直观，一些生活科普，常识科普都可以）', value: '3' },
+      { name: '三年级（绘本辅以简短的故事书，字较多，故事情节较为复杂，主旨和意义不那么容易理解，一些科学性较强的书）', value: '4' },
+      { name: '四年级（小的故事书，厚度不超过100页的，情节较长，故事教复杂）', value: '5' },
+      { name: '五年级及以上（故事很复杂，篇幅很长，文字很多的）', value: '6' },
+      { name: '所有年级都适合（比如一些玩具书，无字书等等）', value: '7' },
     ],
   },
   onLoad: function (e) {
@@ -93,12 +122,32 @@ Page({
 
     query.get(objectId, {
       success: function (result) {
-        console.log(result);
-
         that.setData({
           rows: result,
-
         })
+        console.log(result);
+        if (result.attributes.type){
+          that.setData({
+            typeItems: result.attributes.type,
+          })
+        }
+        if (result.attributes.category) {
+          that.setData({
+            categoryItems: result.attributes.category,
+          })
+        }
+        if (result.attributes.theme) {
+          that.setData({
+            themeItems: result.attributes.theme,
+          })
+        }
+        if (result.attributes.level) {
+          that.setData({
+            levelItems: result.attributes.level,
+          })
+        }
+
+
         // The object was retrieved successfully.        
       },
       error: function (result, error) {
@@ -117,6 +166,82 @@ Page({
       });
     }, 3000);
   },
+  categoryChange: function (e) {
+    console.log('category发生change事件，携带value值为：', e.detail.value);
+
+    var categoryItems = this.data.categoryItems, values = e.detail.value;
+    for (var i = 0, lenI = categoryItems.length; i < lenI; ++i) {
+      categoryItems[i].checked = false;
+
+      for (var j = 0, lenJ = values.length; j < lenJ; ++j) {
+        if (categoryItems[i].value == values[j]) {
+          categoryItems[i].checked = true;
+          break;
+        }
+      }
+    }
+
+    this.setData({
+      categoryItems: categoryItems
+    });
+  },
+  typeChange: function (e) {
+    console.log('type发生change事件，携带value值为：', e.detail.value);
+
+    var typeItems = this.data.typeItems, values = e.detail.value;
+    for (var i = 0, lenI = typeItems.length; i < lenI; ++i) {
+      typeItems[i].checked = false;
+
+      for (var j = 0, lenJ = values.length; j < lenJ; ++j) {
+        if (typeItems[i].value == values[j]) {
+          typeItems[i].checked = true;
+          break;
+        }
+      }
+    }
+
+    this.setData({
+      typeItems: typeItems
+    });
+  },
+  levelChange: function (e) {
+    console.log('level发生change事件，携带value值为：', e.detail.value);
+
+    var levelItems = this.data.levelItems, values = e.detail.value;
+    for (var i = 0, lenI = levelItems.length; i < lenI; ++i) {
+      levelItems[i].checked = false;
+
+      for (var j = 0, lenJ = values.length; j < lenJ; ++j) {
+        if (levelItems[i].value == values[j]) {
+          levelItems[i].checked = true;
+          break;
+        }
+      }
+    }
+
+    this.setData({
+      levelItems: levelItems
+    });
+  },
+  themeChange: function (e) {
+    console.log('type发生change事件，携带value值为：', e.detail.value);
+
+    var themeItems = this.data.themeItems, values = e.detail.value;
+    for (var i = 0, lenI = themeItems.length; i < lenI; ++i) {
+      themeItems[i].checked = false;
+
+      for (var j = 0, lenJ = values.length; j < lenJ; ++j) {
+        if (themeItems[i].value == values[j]) {
+          themeItems[i].checked = true;
+          break;
+        }
+      }
+    }
+
+    this.setData({
+      themeItems: themeItems
+    });
+  },
   modifyBook: function (event) {
     var objectId = this.objectid;
     console.log(objectId);
@@ -127,13 +252,44 @@ Page({
     var ratingscore = event.detail.value.ratingscore;
     var ratingnumber = event.detail.value.ratingnumber;
     var rating = [ratingscore, ratingnumber];
+    var booktype = this.data.typeItems;
+    var booktheme = this.data.themeItems;
+    var bookcategory = this.data.categoryItems;
+    var booklevel = this.data.levelItems;
     var binding = event.detail.value.binding;
     var series = event.detail.value.series;
     var pages = event.detail.value.pages;
     var author_intro = event.detail.value.author_intro;
     var summary = event.detail.value.summary;
     var formId = event.detail.formId;
-    console.log("event", event)
+    var typeArray = new Array();
+    for (var i = 0, j = 0, lenI = booktype.length; i < lenI; ++i) {
+      if (booktype[i].checked == true) {
+        typeArray[j] = booktype[i].name;
+        j++;
+      }
+    }
+    var themeArray = new Array();
+    for (var i = 0,j = 0, lenI = booktheme.length; i < lenI; ++i){
+      if (booktheme[i].checked == true){
+        themeArray[j] = booktheme[i].name;
+        j++;
+      }
+    }
+    var categoryArray = new Array();
+    for (var i = 0, j = 0, lenI = bookcategory.length; i < lenI; ++i) {
+      if (bookcategory[i].checked == true) {
+        categoryArray[j] = bookcategory[i].name;
+        j++;
+      }
+    }
+    var levelArray = new Array();
+    for (var i = 0, j = 0, lenI = booklevel.length; i < lenI; ++i) {
+      if (booklevel[i].checked == true) {
+        levelArray[j] = booklevel[i].name;
+        j++;
+      }
+    }
     var currentUser = Bmob.User.current();
 
     var User = Bmob.Object.extend("_User");
@@ -145,7 +301,11 @@ Page({
 
     book.get(objectId, {
       success: function (result) {
-        console.log(result)
+        console.log(result);
+        console.log(themeArray);
+        console.log(levelArray);
+        console.log(categoryArray);
+        console.log(typeArray);
         // 回调中可以取得这个 GameScore 对象的一个实例，然后就可以修改它了
         result.set('subtitle', subtitle);
         result.set('isbn', isbn);
@@ -154,6 +314,10 @@ Page({
         result.set('rating', rating);
         result.set('binding', binding);
         result.set('series', series);
+        result.set('type', booktype);
+        result.set('theme', booktheme);
+        result.set('category', bookcategory);
+        result.set('level', booklevel);
         result.set('pages', pages);
         result.set('author_intro', author_intro);
         result.set('summary', summary);
