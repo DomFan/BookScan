@@ -62,7 +62,7 @@
                     <view class="weui-label" >ISBN</view>
                 </view>
                 <view class="weui-cell__bd">
-                    <input class="weui-input" name="isbn" placeholder=""/>
+                    <input class="weui-input" type='digit' name="isbn" placeholder=""/>
                 </view>
             </view>
             <view class="weui-cell weui-cell_input">
@@ -70,7 +70,7 @@
                     <view class="weui-label" >页数</view>
                 </view>
                 <view class="weui-cell__bd">
-                    <input class="weui-input" name="pages" placeholder=""/>
+                    <input class="weui-input" type='digit' name="pages" placeholder=""/>
                 </view>
             </view>
             <view class="weui-cell weui-cell_input weui-cell_vcode">
@@ -102,7 +102,7 @@
                     <view class="weui-label">豆瓣评分</view>
                 </view>
                 <view class="weui-cell__bd">
-                    <input class="weui-input" name="ratingscore" placeholder=""/>
+                    <input class="weui-input" type='digit' name="ratingscore" placeholder=""/>
                 </view>
             </view>
             <view class="weui-cell weui-cell_input weui-cell_vcode">
@@ -110,7 +110,7 @@
                     <view class="weui-label">打分人数</view>
                 </view>
                 <view class="weui-cell__bd">
-                    <input class="weui-input" name="ratingnumber" placeholder="" />
+                    <input class="weui-input" type='digit' name="ratingnumber" placeholder="" />
                 </view>
             </view>
             <view class="weui-cell weui-cell_input">
