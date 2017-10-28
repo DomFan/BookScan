@@ -418,6 +418,13 @@ Page({
               rating = ["0.0", "0"];
             }
 
+            if (res.data.books[0].hasOwnProperty("isbn13") && res.data.books[0].isbn13) {
+              isbn = res.data.books[0].isbn13;
+            }
+            else {
+              isbn = "XXXXXX";
+            }
+
             that.setData({
               articleTitle: title,
               articleAuthor: author,
