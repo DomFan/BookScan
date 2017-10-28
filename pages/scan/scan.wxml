@@ -30,5 +30,5 @@
   <view class="page__desc">出版社</view>
   <input class="weui-input" id="publisherSearch" placeholder="请输入出版社" bindinput='getPublisher' value='{{publisherSearch}}' />
   <view class="page__desc">ISBN号</view>
-  <input class="weui-input" id="isbnSearch" placeholder="请输isbn号" bindinput='getISBN' value='{{isbnSearch}}' />
+  <input class="weui-input" type='digit' id="isbnSearch" placeholder="请输isbn号" bindinput='getISBN' value='{{isbnSearch}}' />
 </modal>
