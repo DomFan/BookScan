@@ -26,6 +26,34 @@ Page({
           rows: result,
 
         })
+        // var typeArray = new Array();
+        // for (var i = 0, j = 0, lenI = booktype.length; i < lenI; ++i) {
+        //   if (booktype[i].checked == true) {
+        //     typeArray[j] = booktype[i].name;
+        //     j++;
+        //   }
+        // }
+        // var themeArray = new Array();
+        // for (var i = 0, j = 0, lenI = booktheme.length; i < lenI; ++i) {
+        //   if (booktheme[i].checked == true) {
+        //     themeArray[j] = booktheme[i].name;
+        //     j++;
+        //   }
+        // }
+        // var categoryArray = new Array();
+        // for (var i = 0, j = 0, lenI = bookcategory.length; i < lenI; ++i) {
+        //   if (bookcategory[i].checked == true) {
+        //     categoryArray[j] = bookcategory[i].name;
+        //     j++;
+        //   }
+        // }
+        // var levelArray = new Array();
+        // for (var i = 0, j = 0, lenI = booklevel.length; i < lenI; ++i) {
+        //   if (booklevel[i].checked == true) {
+        //     levelArray[j] = booklevel[i].name;
+        //     j++;
+        //   }
+        // }
         // The object was retrieved successfully.        
       },
       error: function (result, error) {
