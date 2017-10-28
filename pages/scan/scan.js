@@ -514,6 +514,13 @@ Page({
               });
             }
             else {
+              if (res.statusCode == 200 && res.data.count == 0) {
+                wx.showModal({
+                  title: '妈耶',
+                  content: '还是搜不到这本书诶',
+                  cancelText: false,
+                });
+              }
               if (res.data.code == 112) {
                 wx.showModal({
                   title: '妈耶',
