@@ -286,6 +286,13 @@ Page({
     });
   },
 
+  onSearchButton: function () {
+    var that = this;
+    that.setData({
+      modalHidden: false,
+    });
+  },
+
   onSearchConfirm: function () {
     var that = this;
     var titleSearch = that.data.titleSearch;

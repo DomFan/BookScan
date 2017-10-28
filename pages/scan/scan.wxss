@@ -15,6 +15,19 @@ page {
   z-index: 999;
 }
 
+.toSearch {
+  width: 100rpx;
+  height: 100rpx;
+  display: block;
+  /*background:url("/image/1.png") no-repeat;*/
+  padding: 0;
+  background-size: cover;
+  position: fixed;
+  right: 74rpx;
+  bottom: 250rpx;
+  z-index: 999;
+}
+
 image {
   margin: 4px auto;
   display: flex;
