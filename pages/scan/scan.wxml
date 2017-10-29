@@ -24,9 +24,11 @@
 </view>
 <modal hidden="{{modalHidden}}" title="手动找书" confirm-text="查询" cancel-text="取消" bindcancel="onSearchCancel" bindconfirm='onSearchConfirm'>
   <view class="page__desc">书名</view>
-  <input class="weui-input" id="titleSearch" placeholder="请输入书名" bindinput='getTitle' value='{{titleSearch}}'/>
+  <input class="weui-input" id="titleSearch" placeholder="请输入书名" bindinput='getTitle' value='{{titleSearch}}' />
   <view class="page__desc">作者</view>
-  <input class="weui-input" id="authorSearch" placeholder="请输入作者" bindinput='getAuthor' value='{{authorSearch}}'/>
+  <input class="weui-input" id="authorSearch" placeholder="请输入作者" bindinput='getAuthor' value='{{authorSearch}}' />
   <view class="page__desc">出版社</view>
-  <input class="weui-input" id="publisherSearch" placeholder="请输入出版社" bindinput='getPublisher' value='{{publisherSearch}}'/>
+  <input class="weui-input" id="publisherSearch" placeholder="请输入出版社" bindinput='getPublisher' value='{{publisherSearch}}' />
+  <view class="page__desc">ISBN号</view>
+  <input class="weui-input" type='digit' id="isbnSearch" placeholder="请输isbn号" bindinput='getISBN' value='{{isbnSearch}}' />
 </modal>

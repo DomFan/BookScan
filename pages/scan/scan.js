@@ -36,6 +36,7 @@ Page({
     titleSearch: "",
     authorSearch: "",
     publisherSearch: "",
+    isbnSearch: "",
   },
 
   onLoad: function (options) {
@@ -298,7 +299,8 @@ Page({
     var titleSearch = that.data.titleSearch;
     var authorSearch = that.data.authorSearch;
     var publisherSearch = that.data.publisherSearch;
-    if (!titleSearch && !authorSearch && !publisherSearch) {
+    var isbnSearch = that.data.isbnSearch;
+    if (!titleSearch && !authorSearch && !publisherSearch && !isbnSearch) {
       that.setData({
         modalHidden: true,
       });
@@ -308,6 +310,7 @@ Page({
         titleSearch: "",
         authorSearch: "",
         publisherSearch: "",
+        isbnSearch: "",
         modalHidden: true,
       });
       var key = titleSearch;
@@ -316,6 +319,9 @@ Page({
       }
       if (publisherSearch) {
         key = key + "%20" + publisherSearch;
+      }
+      if (isbnSearch) {
+        key = key + "%20" + isbnSearch;
       }
       console.log(key);
       wx.request({
@@ -576,6 +582,13 @@ Page({
     var that = this;
     that.setData({
       publisherSearch: e.detail.value,
+    });
+  },
+
+  getISBN: function (e) {
+    var that = this;
+    that.setData({
+      isbnSearch: e.detail.value,
     });
   },
 
