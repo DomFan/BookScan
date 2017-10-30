@@ -19,7 +19,7 @@ Page({
     },
     
     about: function (e) {
-         common.showModal('Made By Dada&MaxWell');
+         common.showModal('Made By Dada & Maxwell');
     }
 
 })

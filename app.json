@@ -24,7 +24,7 @@
     "navigationBarBackgroundColor": "#35495e",
     "navigationBarTextStyle": "white",
     "backgroundTextStyle": "light",
-    "navigationBarTitleText": "增删改查-小程序Demo"
+    "navigationBarTitleText": "扫书"
   },
   "tabBar": {
     "color": "#888",
@@ -42,7 +42,7 @@
         "pagePath": "pages/scan/scan",
         "iconPath": "image/9.png",
         "selectedIconPath": "image/9.png",
-        "text": "扫码"
+        "text": "扫书"
       },
       {
         "pagePath": "pages/account/account",
